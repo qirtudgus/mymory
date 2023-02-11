@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import Menu from '@/components/Menu';
 import styled from 'styled-components';
 
 const SideBar = styled.div`
@@ -8,20 +8,6 @@ const SideBar = styled.div`
   background: #fff;
   border-right: 1px solid #000;
   z-index: 10;
-`;
-
-const MenuDiv = styled.div`
-  cursor: pointer;
-  height: 40px;
-  padding: 0 15px;
-  line-height: 40px;
-  &:hover {
-    background: #eee;
-  }
-`;
-
-const Menu = styled.li`
-  font-size: 18px;
 `;
 
 const Main = styled.main`
@@ -34,25 +20,29 @@ const Main = styled.main`
 const Container = styled.div`
   display: flex;
 `;
+const ReactMenu = [{ name: 'React.js' }];
+const ReactArr = [
+  { name: 'useState', link: '/react/useState' },
+  { name: 'useEffect', link: '/react/useEffect' },
+];
+const NextMenu = [{ name: 'Next.js' }];
+const NextArr = [
+  { name: 'useState', link: '/react/useState' },
+  { name: 'useEffect', link: '/react/useEffect' },
+];
+
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const MenuArr = [
-    { name: 'useState', link: '/useState' },
-    { name: 'useEffect', link: '/useEffect' },
-  ];
-
-  const router = useRouter();
-  const routing = (link: string) => {
-    router.push(link);
-  };
-
   return (
     <Container>
       <SideBar>
-        {MenuArr.map((i) => (
-          <MenuDiv onClick={() => routing(i.link)}>
-            <Menu>{i.name}</Menu>
-          </MenuDiv>
-        ))}
+        <Menu
+          menu={ReactMenu}
+          postList={ReactArr}
+        ></Menu>
+        <Menu
+          menu={NextMenu}
+          postList={NextArr}
+        ></Menu>
       </SideBar>
       <Main>{children}</Main>
     </Container>
