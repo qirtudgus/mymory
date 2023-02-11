@@ -8,7 +8,8 @@ export default function UseState() {
   }, []);
   return (
     <>
-      <div>useState</div>
+      <h1>useState에 typeScript를 적용할 때...</h1>
+      안녕하세요
       <Code>{`
         const Data:any[] = [];
 
