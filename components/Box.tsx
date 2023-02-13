@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 const S_Box = styled.div`
-  width: 150px;
-  height: 150px;
-  background-color: #8b8b8b;
+  width: 100px;
+  height: 100px;
+  background-color: #8f8f8f;
   border-radius: 10px;
-  margin: 5px 0;
+  margin: 5px;
   text-align: center;
+  line-height: 100px;
   font-size: 20px;
   font-weight: bold;
 `;
@@ -15,3 +16,4 @@ function Box({ number }: { number: number }) {
 }
 
 export default React.memo(Box);
+// export default Box;
