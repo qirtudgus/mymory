@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import { MouseEvent } from 'react';
+import { MouseEvent, RefObject, useEffect, useRef } from 'react';
 
 interface MenuInterface {
   name: string;
@@ -11,7 +11,15 @@ interface PostListInterface {
   link: string;
 }
 
-export default function Menu({ menu, postList }: { menu: MenuInterface[]; postList: PostListInterface[] }) {
+export default function Menu({
+  menu,
+  isActiveURL,
+  postList,
+}: {
+  menu: MenuInterface[];
+  isActiveURL: string;
+  postList: PostListInterface[];
+}) {
   const router = useRouter();
   const routing = (link: string) => {
     router.push(link);
@@ -26,6 +34,7 @@ export default function Menu({ menu, postList }: { menu: MenuInterface[]; postLi
     <>
       {menu.map((i, index) => (
         <MenuUl
+          className={router.pathname.startsWith(`${isActiveURL}`) ? 'active' : undefined}
           key={index}
           onClick={(e) => ShowMenu(e)}
         >

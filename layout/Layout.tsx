@@ -38,10 +38,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <SideBar>
         <Menu
           menu={ReactMenu}
+          isActiveURL={'/react'}
           postList={ReactArr}
         ></Menu>
         <Menu
           menu={NextMenu}
+          isActiveURL={'/next'}
           postList={NextArr}
         ></Menu>
       </SideBar>
