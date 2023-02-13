@@ -24,6 +24,7 @@ const ReactMenu = [{ name: 'React.js' }];
 const ReactArr = [
   { name: 'useState', link: '/react/useState' },
   { name: 'useEffect', link: '/react/useEffect' },
+  { name: 'rendering', link: '/react/rendering' },
 ];
 const NextMenu = [{ name: 'Next.js' }];
 const NextArr = [
