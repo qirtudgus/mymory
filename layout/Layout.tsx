@@ -22,9 +22,10 @@ const Container = styled.div`
 `;
 const ReactMenu = [{ name: 'React.js' }];
 const ReactArr = [
-  { name: 'useState', link: '/react/useState' },
-  { name: 'useEffect', link: '/react/useEffect' },
+  { name: 'useState', link: '/react/State' },
+  { name: 'useEffect', link: '/react/Effect' },
   { name: 'rendering', link: '/react/rendering' },
+  { name: 'infiniteScroll', link: '/react/infiniteScroll' },
 ];
 const NextMenu = [{ name: 'Next.js' }];
 const NextArr = [
