@@ -11,8 +11,8 @@ const S_Box = styled.div`
   font-size: 20px;
   font-weight: bold;
 `;
-function Box({ number }: { number: number }) {
-  return <S_Box>{number}</S_Box>;
+function Box({ number, id }: { number: number; id: string }) {
+  return <S_Box id={id}>{number}</S_Box>;
 }
 
 export default React.memo(Box);
