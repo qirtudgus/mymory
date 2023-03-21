@@ -26,6 +26,8 @@ const ReactArr = [
   { name: 'useEffect', link: '/react/Effect' },
   { name: 'rendering', link: '/react/rendering' },
   { name: 'infiniteScroll', link: '/react/infiniteScroll' },
+  { name: 'requestAnimationFrame', link: '/react/requestAnimationFrame' },
+  { name: 'useRef', link: '/react/UseRef' },
 ];
 const NextMenu = [{ name: 'Next.js' }];
 const NextArr = [
