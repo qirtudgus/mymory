@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import Code from '@/components/Code';
+import hljs from 'highlight.js';
+import React, { forwardRef, ReactNode, useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
 
@@ -14,23 +16,72 @@ const Box = styled.div`
   margin-bottom: 20px;
 `;
 
+//props 구조분해를 하지않을 시 (ref와 props의 순서가 반대인것이 특징)
+interface Props {
+  children?: ReactNode;
+}
+type Ref = HTMLDivElement;
+
+const Boxs = forwardRef<Ref, Props>((props, ref) => {
+  return <Box ref={ref}>{props.children}</Box>;
+});
+
+const BoxComponent = React.memo(Boxs);
+
 const InfiniteScroll = () => {
-  const [number, setNumber] = useState([0, 1, 2, 3]);
-
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
-    threshold: 0,
-  });
-
-  useEffect(() => {}, [inView]);
+  const [number, setNumber] = useState([0, 1, 2]);
+  const { ref, inView, entry } = useInView();
+  useEffect(() => {
+    // inView 값이 true일 때만 실행합니다.
+    if (inView) {
+      console.log('inView에 따른 상태값 추가');
+      setNumber((prev) => {
+        let result = [...prev];
+        result.push(prev[prev.length - 1] + 1);
+        return result;
+      });
+    }
+  }, [inView]);
+  useEffect(() => {
+    hljs.highlightAll();
+  }, []);
 
   return (
     <>
+      <h1>무한 스크롤</h1>
+      <p>무한스크롤을 구현할 때 자주 쓰이는 intersectionObserver 모듈을 통한 방법이다.</p>
+      <Code>{`npm i react-intersection-observer`}</Code>
+      <Code>
+        {`
+  const [number, setNumber] = useState([0, 1, 2]);
+  const { ref, inView, entry } = useInView();
+  
+  useEffect(() => {
+    // inView 값이 true일 때만 실행합니다.
+    if (inView) {
+      console.log('inView에 따른 상태값 추가');
+      setNumber((prev) => {
+        let result = [...prev];
+        result.push(prev[prev.length - 1] + 1);
+        return result;
+      });
+    }
+  }, [inView]);
+        `}
+      </Code>
+
       {number.map((i) => {
-        return <Box ref={ref}>{i}</Box>;
+        return (
+          <BoxComponent
+            key={i}
+            ref={ref}
+          >
+            {i}
+          </BoxComponent>
+        );
       })}
     </>
   );
 };
 
-export default InfiniteScroll;
+export default React.memo(InfiniteScroll);
