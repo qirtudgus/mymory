@@ -140,3 +140,9 @@ h1 {
   font-weight: bold;
   margin: 15px 0;
 }
+
+p {
+  color: #242424;
+  margin: 15px 0;
+  line-height: 20px;
+}
